@@ -33,13 +33,14 @@ h1{
 
 .carrito{
     margin-top: 40px;
-    width: 25%;
-    height: 500px;
+    width: 40%;
+    height: 1000px;
    background-color: rgb(0, 0, 0);
    color: white;
    text-align: center;
    display: block;
-   justify-content: center;
+   justify-content: space-between;
+
 }
 
 
@@ -76,4 +77,21 @@ td{
 .selectores label{
     display: block;
     justify-content: center;
+}
+
+
+#tbodyCarrito{
+    margin-left: 50px;
+    display: block;
+    justify-content: end;
+}
+
+
+#comprarTodo{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#total{
+    margin-top: 80px;
 }

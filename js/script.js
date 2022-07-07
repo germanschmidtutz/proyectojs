@@ -27,7 +27,6 @@ let arrayLibros = fetch("https://json.extendsclass.com/bin/2087f43656ba")
     }
 
 
-
     //para filtrar los libros
 
     // IMPORTANTE: sé que este filtrado debería estar en una función, pero sinceramente se me complicó, por alguna razón que no supe decifrar no me funcionaba haciendo una función más abajo y llamándola acá arriba, así que decidí dejarlo así porque al menos funciona.
@@ -69,8 +68,16 @@ function FiltrarTabla(eleccion){
  
 }
 
+
+agregarCarrito(libros);
+
+
+
+
 });
 
+
+const carrito = [];
 
 
 
@@ -97,28 +104,96 @@ function RellenarLibros (array){
 }
 
 
+// ------------
+
+
+function agregarCarrito(array){
+
+
+
+    
+   
+    for (let i = 0; i < array.length ; i ++){
+
+    let comprar = document.getElementById(array[i].id);
+    comprar.addEventListener("click", () => {
+
+
+        // --------
+        carrito.push(array[i]);
+        console.log(carrito);
+
+
+
+        // ----------
+
+        const tbodyCarrito = document.getElementById("tbodyCarrito");
+
+        let trCarrito = document.createElement("tr");
+        trCarrito.innerHTML=`
+        <td>${carrito[i].libro} </td><br>
+        <td> $${carrito[i].precio}</td>
+    `;
+
+        tbodyCarrito.appendChild(trCarrito);
+
+
+    })
+
+
+    }
+
+
+    let vaciar = document.getElementById("vaciar");
+    vaciar.addEventListener("click", () => {
+    carrito.splice(0,carrito.length);
+    // let trCarrito = document.createElement("tr");
+    // trCarrito.innerHTML= "";
+    // tbodyCarrito.appendChild(trCarrito);
+
+    tbodyCarrito.innerHTML= ""
+    
+    })
 
 
 
 
 
-let botones = document.getElementsByClassName("comprar");
 
 
-botones.onclick =  () => { console.log("asd")};
+
+}
+
+
+
+
+
+
+    let comprarTodo = document.getElementById("comprarTodo");
+    comprarTodo.onclick =  () => { console.log("asd")};
+
+
+
+
+
+// borrarElemento.onclick = () => {carrito.splice(array[i],1);}
+
+
 
 
 // carrito de compras
 
 
-const tbodyCarrito = document.getElementById("tbodyCarrito");
+// const tbodyCarrito = document.getElementById("tbodyCarrito");
 
-let trCarrito = document.createElement("tr");
-trCarrito.innerHTML="<td>holaaa</td>";
+// let trCarrito = document.createElement("tr");
+// trCarrito.innerHTML="<td>holaaa</td>";
 
-tbodyCarrito.appendChild(trCarrito);
+// tbodyCarrito.appendChild(trCarrito);
 
 
-let comprarTodo = document.getElementById("comprarTodo");
-comprarTodo.onclick =  () => { console.log("asd")};
+
+
+
+
 
