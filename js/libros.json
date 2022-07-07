@@ -1,0 +1,49 @@
+[
+
+
+    {"libro": "cien años de soledad", "precio": 500, "nombreAut": "gabriel", "apellidoAut": "garcía márquez", "imagen": "../img/100años.png", "tipo": "drama", "id": 0},
+
+    
+    {"libro": "1984", "precio": 800, "nombreAut": "george", "apellidoAut": "orwell", "imagen": "../img/1984.png" , "tipo": "romance", "id": 1},
+
+
+    {"libro": "cartas a milena", "precio": 600, "nombreAut": "franz", "apellidoAut": "kafka", "imagen": "../img/cartasamilena.png" , "tipo": "romance", "id": 2},
+
+
+    {"libro": "chaucha y palito", "precio": 500, "nombreAut": "maría elena", "apellidoAut": "walsh", "imagen": "../img/chaucha.png" , "tipo": "drama", "id": 3},
+
+
+    {"libro": "dailan kifki", "precio": 600, "nombreAut": "maría elena", "apellidoAut": "walsh", "imagen": "../img/dailan.png" , "tipo": "drama", "id": 4},
+
+
+    {"libro": "don quijote de la mancha", "precio": 1000, "nombreAut": "miguel", "apellidoAut": "de cervantes", "imagen": "../img/donquijote.png" , "tipo": "romance", "id": 5},
+
+
+    {"libro": "el aleph", "precio": 700, "nombreAut": "jorge luis", "apellidoAut": "borges", "imagen": "../img/elaleph.png" , "tipo": "romance", "id": 6},
+
+
+    {"libro": "el castillo", "precio": 700, "nombreAut": "franz", "apellidoAut": "kafka", "imagen": "../img/elcastillo.png" , "tipo": "drama", "id": 7},
+
+
+    {"libro": "el principito", "precio": 900, "nombreAut": "antoine", "apellidoAut": "de saint-exupéry", "imagen": "../img/elprincipito.png" , "tipo": "fantasticos", "id": 8},
+
+
+    {"libro": "ficciones", "precio": 900, "nombreAut": "jorge luis", "apellidoAut": "borges", "imagen": "../img/ficciones.png", "tipo": "fantasticos", "id": 9},
+
+
+    {"libro": "hamlet", "precio": 1200, "nombreAut": "william", "apellidoAut": "shakespeare", "imagen": "../img/hamlet.png", "tipo": "fantasticos", "id": 10},
+
+
+    {"libro": "la metamorfosis", "precio": 1100, "nombreAut": "franz", "apellidoAut": "kafka", "imagen": "../img/lametamorfosis.png", "tipo": "fantasticos", "id": 11},
+
+
+    {"libro": "rebelión en la granja", "precio": 1300, "nombreAut": "george", "apellidoAut": "orwell", "imagen": "../img/rebelion.png", "tipo": "romance", "id": 12},
+
+
+    {"libro": "romeo y julieta", "precio": 1500, "nombreAut": "william", "apellidoAut": "shakespeare", "imagen": "../img/romeoyjulieta.png", "tipo": "romance", "id": 13},
+
+
+    {"libro": "tutú marambá", "precio": 400, "nombreAut": "maría elena", "apellidoAut": "walsh", "imagen": "../img/tutu.png", "tipo": "drama", "id": 14}
+    
+
+]

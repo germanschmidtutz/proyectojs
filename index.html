@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Tapa Virtual</title>
+</head>
+<body>
+    
+
+    <h1>Tapa virtual</h1>
+
+    <div class="selectores">
+
+        <h2>Podés filtrar los libros por género:</h2>
+        <label>
+            <span>Drama</span>
+            <input type="radio" name="filtro" value="drama" class="radio">
+        </label>
+        <label>
+            <span>Romance</span>
+            <input type="radio" name="filtro" value="romance" class="radio">
+        </label>
+        <label>
+            <span>Fantásticos</span>
+            <input type="radio" name="filtro" value="fantasticos" class="radio">
+        </label>
+       <label>
+            <span>Todos los géneros</span>
+            <input type="radio" name="filtro" value="todos" class="radio">
+       </label>
+    </div>
+
+    <div class="contenedor">
+
+        <div class="carrito">
+            
+            <table>
+                
+                <h2>Carrito de compras</h2> <br><br>
+
+                <tbody id="tbodyCarrito"></tbody><br>
+                <tbody>hola</tbody>
+
+            </table>
+           
+            <button id="comprarTodo">Comprar todo</button>
+     
+            
+         </div>
+
+
+    <div class="tabla">
+
+        <table class="libros">
+
+            <thead>
+                <tr>
+                    <th>Tapa</th>
+                    <th>Libro</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+    
+            <tbody id="tbody"></tbody>
+
+            
+    </div>
+
+
+    </div>
+
+
+    <script src="./js/script.js"></script>
+
+</body>
+</html>
