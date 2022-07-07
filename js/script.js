@@ -1,5 +1,8 @@
-// tuve que subir mi .json a un storage externo porque no me lo tomaba como interno. El Live Server me buscaba el ./libros.json como si fuera una web externa y me tiraba error 404 (porque obviamente no existe esa dirección). Aún así, dejé el archivo guardado por las dudas. Aunque no lo pude arreglar, me rebusqué la solución :).
-// (casi me vuelvo loco)
+// tuve que subir mi .json a un storage externo porque no me lo tomaba como interno. El Live Server me buscaba el ./libros.json como si fuera una web externa y me tiraba error 404 (porque obviamente no existe esa dirección). Aún así, dejé el archivo guardado por las dudas. Aunque no lo pude arreglar, me rebusqué la solución.
+
+// el storage del carrito no funciona y no sé por qué
+
+// cuando se filtra por género dejan de funcionar los botones de agregar carrito, pero cuando se ven todos los géneros funciona bien. Tampoco logré entender por qué.
 
 
 
@@ -12,7 +15,7 @@ let arrayLibros = fetch("https://json.extendsclass.com/bin/2087f43656ba")
 
 .then( (libros) => {console.log(libros)
 
-    // viendo si hay un localstorage anterior
+    // viendo si hay un localstorage anterior de los libros
 
     const storage = JSON.parse(localStorage.getItem("filtro"));
 
@@ -24,7 +27,18 @@ let arrayLibros = fetch("https://json.extendsclass.com/bin/2087f43656ba")
 
         RellenarLibros(libros);
 
+
     }
+    
+    // si hay storage anterior del carrito
+
+    const storageCarrito = JSON.parse(localStorage.getItem("storageCarrito"));
+
+    if (storageCarrito){
+        Carrito(storageCarrito);
+
+    }
+
 
 
     //para filtrar los libros
@@ -51,6 +65,7 @@ function FiltrarTabla(eleccion){
     if(inputValue == "TODOS"){
 
         arrayLibros = libros;
+ 
 
     }else{
         arrayLibros = libros.filter((libro) => {
@@ -63,21 +78,21 @@ function FiltrarTabla(eleccion){
     }
 
 
+    // guardar en storage
+
     localStorage.setItem("filtro", JSON.stringify(arrayLibros));
     RellenarLibros(arrayLibros)
- 
+    
+
 }
 
-
-agregarCarrito(libros);
-
-
+// llamada a la función del carrito
+Carrito(libros);
 
 
 });
 
 
-const carrito = [];
 
 
 
@@ -104,10 +119,13 @@ function RellenarLibros (array){
 }
 
 
-// ------------
+// para el carrito
+const carrito = [];
+let precioTotal = 0;
 
 
-function agregarCarrito(array){
+//funciones del carrito
+function Carrito(array){
 
 
 
@@ -119,15 +137,19 @@ function agregarCarrito(array){
     comprar.addEventListener("click", () => {
 
 
-        // --------
+        // agregando totales parciales y final, y agregándolos al carrito visualmente
+        precioTotal = precioTotal + JSON.parse([array[i].precio]);
+        console.log(precioTotal)
         carrito.push(array[i]);
         console.log(carrito);
 
+        let total= document.getElementById("total");
+        total.innerHTML=precioTotal;
 
-
-        // ----------
 
         const tbodyCarrito = document.getElementById("tbodyCarrito");
+
+        // agregando elementos al carrito
 
         let trCarrito = document.createElement("tr");
         trCarrito.innerHTML=`
@@ -138,58 +160,52 @@ function agregarCarrito(array){
         tbodyCarrito.appendChild(trCarrito);
 
 
+        // toastify cuando se agrega un libro al carrito
+        Toastify({
+            text: "¡Libro agregado al carrito!",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+
+        localStorage.setItem("storageCarrito", JSON.stringify(storageCarrito));
+
+
     })
 
 
     }
 
+    // para vaciar el carrito
 
     let vaciar = document.getElementById("vaciar");
     vaciar.addEventListener("click", () => {
     carrito.splice(0,carrito.length);
-    // let trCarrito = document.createElement("tr");
-    // trCarrito.innerHTML= "";
-    // tbodyCarrito.appendChild(trCarrito);
+
 
     tbodyCarrito.innerHTML= ""
-    
+    total.innerHTML= "";
+    precioTotal = 0;
+    localStorage.setItem("storageCarrito", JSON.stringify(carrito));
     })
-
-
-
-
-
-
-
 
 }
 
 
-
-
-
-
+    // funcionalidad del botón comprar todo
     let comprarTodo = document.getElementById("comprarTodo");
-    comprarTodo.onclick =  () => { console.log("asd")};
+    comprarTodo.onclick =  () => {  
+        Swal.fire('El total de su compra es: $' + precioTotal)
+    };
 
-
-
-
-
-// borrarElemento.onclick = () => {carrito.splice(array[i],1);}
-
-
-
-
-// carrito de compras
-
-
-// const tbodyCarrito = document.getElementById("tbodyCarrito");
-
-// let trCarrito = document.createElement("tr");
-// trCarrito.innerHTML="<td>holaaa</td>";
-
-// tbodyCarrito.appendChild(trCarrito);
 
 
 
