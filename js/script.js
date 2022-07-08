@@ -2,7 +2,7 @@
 
 // el storage del carrito no funciona y no sé por qué
 
-// cuando se filtra por género dejan de funcionar los botones de agregar carrito, pero cuando se ven todos los géneros funciona bien. Tampoco logré entender por qué.
+// cuando se filtra por género dejan de funcionar los botones de agregar carrito, pero cuando se ven todos los géneros funciona bien. Tampoco logré entender por qué y después de intentarlo por días me rendí.
 
 
 
@@ -65,13 +65,12 @@ function FiltrarTabla(eleccion){
     if(inputValue == "TODOS"){
 
         arrayLibros = libros;
- 
+        Carrito(libros)
 
     }else{
         arrayLibros = libros.filter((libro) => {
-
             return libro.tipo.toUpperCase() === inputValue;
-
+ 
         })
  
         
@@ -128,13 +127,10 @@ let precioTotal = 0;
 function Carrito(array){
 
 
-
-    
-   
     for (let i = 0; i < array.length ; i ++){
 
     let comprar = document.getElementById(array[i].id);
-    comprar.addEventListener("click", () => {
+    comprar.onclick = () => {
 
 
         // agregando totales parciales y final, y agregándolos al carrito visualmente
@@ -164,7 +160,6 @@ function Carrito(array){
         Toastify({
             text: "¡Libro agregado al carrito!",
             duration: 3000,
-            destination: "https://github.com/apvarun/toastify-js",
             newWindow: true,
             close: true,
             gravity: "top", // `top` or `bottom`
@@ -176,10 +171,10 @@ function Carrito(array){
             onClick: function(){} // Callback after click
           }).showToast();
 
-        localStorage.setItem("storageCarrito", JSON.stringify(storageCarrito));
+        // localStorage.setItem("storageCarrito", JSON.stringify(storageCarrito));
 
 
-    })
+    }
 
 
     }
@@ -194,7 +189,7 @@ function Carrito(array){
     tbodyCarrito.innerHTML= ""
     total.innerHTML= "";
     precioTotal = 0;
-    localStorage.setItem("storageCarrito", JSON.stringify(carrito));
+    localStorage.setItem("storageCarrito", JSON.stringify(storageCarrito));
     })
 
 }
@@ -206,6 +201,26 @@ function Carrito(array){
         Swal.fire('El total de su compra es: $' + precioTotal)
     };
 
+
+
+    setTimeout(() => {
+
+
+        Swal.fire({
+            title: 'LIBROS DIGITALES, \n PRECIOS DIGITALES \n \n Viví la experiencia \n de leer un e-book.',
+            width: 600,
+            padding: '3em',
+            color: 'black',
+            background: 'white',
+            confirmButtonColor: "black",
+            backdrop: `
+              rgba(black)
+              left top
+              no-repeat
+            `
+          })
+        
+    }, 3000);
 
 
 
