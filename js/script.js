@@ -41,6 +41,7 @@ let arrayLibros = fetch("https://json.extendsclass.com/bin/2087f43656ba")
 
 
 
+
     //para filtrar los libros
 
     // IMPORTANTE: sé que este filtrado debería estar en una función, pero sinceramente se me complicó, por alguna razón que no supe decifrar no me funcionaba haciendo una función más abajo y llamándola acá arriba, así que decidí dejarlo así porque al menos funciona.
@@ -65,15 +66,16 @@ function FiltrarTabla(eleccion){
     if(inputValue == "TODOS"){
 
         arrayLibros = libros;
-        Carrito(libros)
+        RellenarLibros(libros);
+
 
     }else{
         arrayLibros = libros.filter((libro) => {
+            RellenarLibros(libros);
             return libro.tipo.toUpperCase() === inputValue;
- 
+
         })
- 
-        
+
     }
 
 
@@ -131,6 +133,7 @@ function Carrito(array){
 
     let comprar = document.getElementById(array[i].id);
     comprar.onclick = () => {
+        console.log("hola")
 
 
         // agregando totales parciales y final, y agregándolos al carrito visualmente
